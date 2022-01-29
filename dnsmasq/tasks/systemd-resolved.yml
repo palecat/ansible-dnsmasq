@@ -1,0 +1,18 @@
+---
+
+- name: Create resolved.conf.d directory
+  ansible.builtin.file:
+    path: "{{ resolved_conf_dir_path }}"
+    state: directory
+
+- name: Create configuration file
+  ansible.builtin.copy:
+    dest: "{{ resolved_conf_dir_path }}//noresolved.conf"
+    content: |
+      [Resolve]
+      DNSStubListener=no
+
+- name: Restart systemd-resolved service
+  ansible.builtin.service:
+    name: systemd-resolved
+    state: restarted

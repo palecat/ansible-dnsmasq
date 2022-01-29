@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: yes
+  roles:
+    - role: dnsmasq
+      dnsmasq_no_resolv: true
+      dnsmasq_address: /dev/127.0.0.1
+      dnsmasq_server: 8.8.8.8

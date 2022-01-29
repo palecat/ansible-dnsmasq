@@ -1,0 +1,4 @@
+---
+# vars file for dnsmasq_role
+
+resolved_conf_dir_path: /etc/systemd/resolved.conf.d

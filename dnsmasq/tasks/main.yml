@@ -1,0 +1,24 @@
+---
+# tasks file for dnsmasq_role
+
+- name: Install dnsmasq
+  ansible.builtin.apt:
+    name: dnsmasq
+    state: latest
+
+- name: Disable systemd-resolved listener on port 53
+  include_tasks: systemd-resolved.yml
+
+- name: Set configuration file
+  ansible.builtin.template:
+    src: templates/dnsmasq.conf.j2
+    dest: /etc/dnsmasq.conf
+    backup: yes
+    validate: dnsmasq --test --conf-file=%s
+  notify:
+    - Restart dnsmasq
+
+- name: Ensure dnsmasq service is running
+  ansible.builtin.service:
+    name: dnsmasq
+    state: started

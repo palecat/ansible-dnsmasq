@@ -1,0 +1,10 @@
+---
+# defaults file for dnsmasq_role
+
+dnsmasq_domain_needed: true
+dnsmasq_bogus_priv: true
+dnsmasq_expand_hosts: true
+dnsmasq_no_resolv: false
+
+dnsmasq_port: "53"
+dnsmasq_conf_dir: "/etc/dnsmasq.d"
