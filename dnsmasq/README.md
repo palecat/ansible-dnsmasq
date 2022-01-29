@@ -1,4 +1,4 @@
-Role Name
+dnsmasq
 =========
 
 Ansible role which installs / configures dnsmasq
